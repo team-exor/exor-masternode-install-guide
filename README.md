@@ -1,8 +1,8 @@
 # Exor Masternode Install Guide
-This tutorial details the steps required to setup a masternode wallet in Ubuntu Linux with a local cold wallet. The steps in this tutorial were written for the Windows wallet but should be similar enough for MacOS and Linux. The local cold wallet will store the actual currency and can be taken offline for security purposes if desired, while the Linux wallet will do all the work required to generate a passive income from the Exor masternode. 
+This tutorial details the steps required to set up an Exor masternode wallet on Ubuntu 16.04+ or Debian 8.x+ x64 with a local controller wallet. The steps in this tutorial were written for the Windows controller wallet but should be similar enough for MacOS and Linux. The local controller wallet will store the actual currency and can be taken offline for security purposes if desired, while the actual masternode wallet on Linux will do all the work required to generate a passive income. 
 ## Requirements
 1) **50,000 Exor** (you actually require a tiny bit more than this to cover the cost of transfer fees - 50,001 is perfect)
-2) **VPS server running Ubuntu 16.04 x64** (bare minimum of 10GB Hard Drive, 512MB Memory)
+2) **VPS server running Ubuntu 16.04+ or Debian 8.x+ x64** (bare minimum of 10GB Hard Drive, 512MB Memory)
 3) **Local Windows/MacOS/Linux Exor Wallet**
 4) **An SSH client such as [Putty](https://www.putty.org/)**
 ## Table of Contents
@@ -17,15 +17,16 @@ This tutorial details the steps required to setup a masternode wallet in Ubuntu 
 - Open the debug console from the main menu (Tools > Debug Console)
 - Type the following cmd and press [ENTER]: `getaccountaddress MN1`
 - **NOTE:** `MN1` should be unique and can be changed to virtually anything that you want. Be sure to remember what you enter here for that value as it will be required later in the setup process. This value will be referred to as the `wallet_alias` for the remainer of this document.
-- After submitting the `getaccountaddress` cmd the new public wallet address should be returned. Make sure to copy this address and save it in a safe place for now such as a new notepad window. This value will be referred to as the `wallet_address` for the remainer of this document.
+- After submitting the `getaccountaddress` cmd, the new public wallet address should be returned. Make sure to copy this address and save it in a safe place for now such as a new notepad window. This value will be referred to as the `wallet_address` for the remainer of this document.
 
-**2) Send 50,000 EXOR to the new masternode address:**
+**2) Send exactly 50,000 EXOR to the new masternode address:**
 - Click into the `Send` tab and paste the `wallet_address` you just copied from last step into the `Pay To` box.
 - **NOTE:** This will automatically populate the `Label` box with your `wallet_alias` (`MN1` in this example).
-- Fill in exactly 50000 into the `Amount` box and ensure that the dropdown beside is set to `EXOR`.
+- Enter __**exactly**__ 50000 into the `Amount` box and ensure that the dropdown beside is set to `EXOR`.
 - Click the `Send` button and click `Yes` when it asks if you are sure you want to send 50000 EXOR to your masternode address.
 -	If your wallet is encrypted (it should be!) and locked, it will now ask you for your unlock passphrase. Enter the passphrase and click `OK`.
 -	You may see a final message asking you to confirm the transaction fee. Click `Yes` to finalize the transaction.
+-	**NOTE:** After sending the 50,000 masternode coins to yourself, your wallet will begin trying to stake that large amount of coins in a short amount of time, which can cause the coins to become immature and unmovable for a few hours. It is therefore recommended at this point that you either lock your wallet if it is encrypted, which will prevent staking from occurring, or else you should completely shut down the wallet software for now until needed again later in the process.
 
 There are still a few more steps needed to complete the local wallet setup, but this concludes the pre-setup instructions.
 
@@ -70,7 +71,7 @@ At the end of the masternode install process you will find some useful cmds and 
 ## Final Local Wallet Setup
 
 **1) Find the Masternode Output Values:**
-- Back in the local cold wallet you can open the debug console from the main menu (Tools > Debug Console)
+- Back in the local controller wallet you can open the debug console from the main menu (Tools > Debug Console)
 - Type the following cmd and press [ENTER]: `getmasternodeoutputs`
 - You will be presented with output that looks similar to this:
 ```
